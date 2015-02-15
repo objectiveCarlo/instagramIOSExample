@@ -18,25 +18,34 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
     
     AppDelegate* appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
     
-    // here i can set accessToken received on previous login
     appDelegate.instagram.accessToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"accessToken"];
     appDelegate.instagram.sessionDelegate = self;
-    if ([appDelegate.instagram isSessionValid]) {
-        //
-        
-    } else {
-        [appDelegate.instagram authorize:[NSArray arrayWithObjects:@"basic", nil]];
+    
+    if (![appDelegate.instagram isSessionValid]) {
+       [appDelegate.instagram authorize:[NSArray arrayWithObjects:@"basic", nil]];
     }
 
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    AppDelegate* appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+    if ([appDelegate.instagram isSessionValid]) {
+        [self pushGalleryView];
+        
+    }
+    
+}
+- (void)pushGalleryView {
+    
+    [self performSegueWithIdentifier:@"pushGalleryView" sender:nil];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 - (IBAction)loginButtonPressed:(id)sender {
     
@@ -50,10 +59,11 @@
 
 -(void)igDidLogin {
     NSLog(@"Instagram did login");
-    // here i can store accessToken
     AppDelegate* appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
     [[NSUserDefaults standardUserDefaults] setObject:appDelegate.instagram.accessToken forKey:@"accessToken"];
     [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [self pushGalleryView];
     
 }
 

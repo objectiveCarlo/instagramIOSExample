@@ -64,7 +64,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FrK-Jl-1ls" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="328" y="-394"/>
+            <point key="canvasLocation" x="753" y="136"/>
         </scene>
         <!--Instagram Main View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -94,6 +94,9 @@
                             <constraint firstAttribute="centerX" secondItem="RLT-Nd-8pO" secondAttribute="centerX" id="r2s-w3-pmg"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <segue destination="SD2-Bs-5Ce" kind="show" identifier="pushGalleryView" id="Ual-La-69u"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
