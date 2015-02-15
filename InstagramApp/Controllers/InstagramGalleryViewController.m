@@ -11,6 +11,7 @@
 #import "IGConnect.h"
 #import "AppDelegate.h"
 #import "NSDictionary+InstagramImages.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 
 @interface InstagramGalleryViewController()<IGRequestDelegate>
@@ -54,6 +55,7 @@
     
     NSString *imageUrl = [dictionaryItem instagramImagesGetImageByResolutionKey:@"standard_resolution"];
     
+    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:imageUrl]];
     return cell;
 }
 #pragma mark - IGRequestDelegate
