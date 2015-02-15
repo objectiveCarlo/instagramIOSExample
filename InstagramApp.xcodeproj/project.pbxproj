@@ -19,6 +19,7 @@
 		C41511A91A90F7F300A32399 /* Instagram.m in Sources */ = {isa = PBXBuildFile; fileRef = C41511A71A90F7F300A32399 /* Instagram.m */; };
 		C41511AD1A91097F00A32399 /* InstagramGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C41511AC1A91097F00A32399 /* InstagramGalleryViewController.m */; };
 		C41511B11A9110BB00A32399 /* GalleryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C41511B01A9110BB00A32399 /* GalleryCollectionViewCell.m */; };
+		C44CC8221A911A6F004EC911 /* NSDictionary+InstagramImages.m in Sources */ = {isa = PBXBuildFile; fileRef = C44CC8211A911A6F004EC911 /* NSDictionary+InstagramImages.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,8 @@
 		C41511AC1A91097F00A32399 /* InstagramGalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramGalleryViewController.m; sourceTree = "<group>"; };
 		C41511AF1A9110BB00A32399 /* GalleryCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GalleryCollectionViewCell.h; path = Views/GalleryCollectionViewCell.h; sourceTree = "<group>"; };
 		C41511B01A9110BB00A32399 /* GalleryCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GalleryCollectionViewCell.m; path = Views/GalleryCollectionViewCell.m; sourceTree = "<group>"; };
+		C44CC8201A911A6F004EC911 /* NSDictionary+InstagramImages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+InstagramImages.h"; path = "Utils/NSDictionary+InstagramImages.h"; sourceTree = "<group>"; };
+		C44CC8211A911A6F004EC911 /* NSDictionary+InstagramImages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+InstagramImages.m"; path = "Utils/NSDictionary+InstagramImages.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +121,7 @@
 		C41511761A90F6D100A32399 /* InstagramApp */ = {
 			isa = PBXGroup;
 			children = (
+				C44CC81F1A911A46004EC911 /* Utils */,
 				C41511AE1A91109300A32399 /* Views */,
 				C41511A21A90F7F300A32399 /* Instagram */,
 				C415119E1A90F7CF00A32399 /* Controllers */,
@@ -187,6 +191,15 @@
 				C41511B01A9110BB00A32399 /* GalleryCollectionViewCell.m */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		C44CC81F1A911A46004EC911 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				C44CC8201A911A6F004EC911 /* NSDictionary+InstagramImages.h */,
+				C44CC8211A911A6F004EC911 /* NSDictionary+InstagramImages.m */,
+			);
+			name = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -331,6 +344,7 @@
 				C415117D1A90F6D100A32399 /* AppDelegate.m in Sources */,
 				C415117A1A90F6D100A32399 /* main.m in Sources */,
 				C41511A81A90F7F300A32399 /* IGRequest.m in Sources */,
+				C44CC8221A911A6F004EC911 /* NSDictionary+InstagramImages.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

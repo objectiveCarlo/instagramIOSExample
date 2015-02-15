@@ -10,6 +10,8 @@
 #import "GalleryCollectionViewCell.h"
 #import "IGConnect.h"
 #import "AppDelegate.h"
+#import "NSDictionary+InstagramImages.h"
+
 
 @interface InstagramGalleryViewController()<IGRequestDelegate>
 
@@ -47,6 +49,10 @@
     static NSString *identifier = @"GalleryCollectionViewCell";
     
     GalleryCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
+    
+    NSDictionary *dictionaryItem = [self.images objectAtIndex:indexPath.row];
+    
+    NSString *imageUrl = [dictionaryItem instagramImagesGetImageByResolutionKey:@"standard_resolution"];
     
     return cell;
 }
