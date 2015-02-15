@@ -2,8 +2,70 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--Instagram Gallery View Controller-->
+        <scene sceneID="Aun-fI-9vC">
+            <objects>
+                <viewController storyboardIdentifier="InstagramGalleryViewController" id="SD2-Bs-5Ce" customClass="InstagramGalleryViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xJP-bT-Lfy"/>
+                        <viewControllerLayoutGuide type="bottom" id="fhb-zN-nsx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="CNj-ry-dxg">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="GgV-Zd-RdZ">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="6H8-JZ-bDw">
+                                    <size key="itemSize" width="112" height="94"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GalleryCollectionViewCell" id="RXt-jr-1fE" customClass="GalleryCollectionViewCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="112" height="94"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AXd-Tn-6Fs">
+                                                    <rect key="frame" x="0.0" y="0.0" width="112" height="94"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <connections>
+                                            <outlet property="imageView" destination="AXd-Tn-6Fs" id="hTd-ae-AhU"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="SD2-Bs-5Ce" id="Kzt-u7-wda"/>
+                                    <outlet property="delegate" destination="SD2-Bs-5Ce" id="Tfm-ps-Uba"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="GgV-Zd-RdZ" secondAttribute="trailing" constant="-16" id="WBd-HG-Z9h"/>
+                            <constraint firstItem="GgV-Zd-RdZ" firstAttribute="top" secondItem="xJP-bT-Lfy" secondAttribute="bottom" id="i2j-Nn-Wxd"/>
+                            <constraint firstItem="GgV-Zd-RdZ" firstAttribute="leading" secondItem="CNj-ry-dxg" secondAttribute="leadingMargin" constant="-16" id="oeA-Db-vFr"/>
+                            <constraint firstItem="fhb-zN-nsx" firstAttribute="top" secondItem="GgV-Zd-RdZ" secondAttribute="bottom" id="w2e-CL-7hL"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="galleryCollectionView" destination="GgV-Zd-RdZ" id="lK1-hR-IkK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FrK-Jl-1ls" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="328" y="-394"/>
+        </scene>
         <!--Instagram Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
