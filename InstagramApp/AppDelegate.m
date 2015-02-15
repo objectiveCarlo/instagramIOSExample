@@ -8,6 +8,11 @@
 
 #import "AppDelegate.h"
 
+#import "IGConnect.h"
+
+#define APP_ID @"3dfa01bb3e2c4fb0b386aea6998a8005"
+#define APP_SECRET @"e0b200327e184092903736e051fc8d3c"
+
 @interface AppDelegate ()
 
 @end
@@ -17,7 +22,22 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    // Override point for customization after application launch.
+    
+    self.instagram = [[Instagram alloc] initWithClientId:APP_ID
+                                                delegate:nil];
+    
     return YES;
+}
+
+-(BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    return [self.instagram handleOpenURL:url];
+}
+
+-(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    return [self.instagram handleOpenURL:url];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

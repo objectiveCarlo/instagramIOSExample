@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@class Instagram;
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
+@property (strong, nonatomic) Instagram *instagram;
 
 @end
 
