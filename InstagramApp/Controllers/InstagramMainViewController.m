@@ -6,13 +6,13 @@
 //  Copyright (c) 2015 incube8. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "InstagramMainViewController.h"
 
-@interface ViewController ()
+@interface InstagramMainViewController ()
 
 @end
 
-@implementation ViewController
+@implementation InstagramMainViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
