@@ -16,6 +16,9 @@
 
 @interface InstagramGalleryViewController()<IGRequestDelegate>
 
+@property (nonatomic, assign) BOOL paging;
+@property (nonatomic, strong) NSString *nextMaxId;
+
 @end
 
 @implementation InstagramGalleryViewController
@@ -33,10 +36,31 @@
     
     AppDelegate* appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"users/self/media/recent", @"method", nil];
+    
+    if (self.nextMaxId) {
+        
+        [params setObject:self.nextMaxId forKey:@"max_id"];
+    }
+    
     [appDelegate.instagram requestWithParams:params
                                     delegate:self];
 }
-
+- (void)getNextMaxIdFomData:(NSDictionary *)data {
+    
+    self.nextMaxId = nil;
+    
+    id possiblePagination = [data objectForKey:@"pagination"];
+    
+    if (possiblePagination && [possiblePagination respondsToSelector:@selector(objectForKey:)]) {
+        
+        id possibleNextMaxId = [possiblePagination objectForKey:@"next_max_id"];
+        
+        if (possibleNextMaxId && [possibleNextMaxId isKindOfClass:[NSString class]]) {
+            
+            self.nextMaxId = possibleNextMaxId;
+        }
+    }
+}
 #pragma mark - UICollectionViewDataSource methods
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
@@ -58,6 +82,18 @@
     [cell.imageView sd_setImageWithURL:[NSURL URLWithString:imageUrl]];
     return cell;
 }
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (scrollView.contentOffset.y == scrollView.contentSize.height - scrollView.bounds.size.height
+        && !_paging) {
+        
+        _paging = YES;
+        
+        [self requestForInstagramImages];
+    }
+}
+
 #pragma mark - IGRequestDelegate
 
 - (void)request:(IGRequest *)request didFailWithError:(NSError *)error {
@@ -73,6 +109,10 @@
 - (void)request:(IGRequest *)request didLoad:(id)result {
     NSLog(@"Instagram did load: %@", result);
     
+    self.nextMaxId = nil;
+    
+    _paging = NO;
+    
     if (result && [result respondsToSelector:@selector(objectForKey:)]) {
         
         id possibleData = result[@"data"];
@@ -83,6 +123,8 @@
             
             [self.galleryCollectionView reloadData];
         }
+        
+        [self getNextMaxIdFomData:result];
     }
 }
 @end
